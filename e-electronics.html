@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Electronics - Your One-Stop Shop for Electronics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #132230;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --gray: #95a5a6;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-top a {
+            color: var(--light);
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            margin-left: 15px;
+            font-size: 1.2rem;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), #2c3e50;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 200px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--gray);
+            font-size: 3rem;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-detail i {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Cart Section */
+        .cart {
+            padding: 80px 0;
+            min-height: 60vh;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .cart-empty i {
+            font-size: 4rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .cart-empty h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .cart-content {
+            display: none;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 2rem;
+            color: var(--gray);
+        }
+
+        .cart-item-details h4 {
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .remove-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cart-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .cart-total {
+            margin-bottom: 20px;
+        }
+
+        .cart-total h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Auth Pages */
+        .auth {
+            padding: 80px 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-header h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .auth-form button {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-footer a {
+            color: var(--secondary);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .user-welcome {
+            display: none;
+            color: var(--light);
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: var(--light);
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        .logout-btn:hover {
+            color: var(--secondary);
+        }
+
+        /* Page Management */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            cursor: pointer;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Message Styles */
+        .form-message {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: white;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+                padding: 80px 30px 30px;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .cart-item-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-left">
+                    <span>Welcome to E-Electronics</span>
+                </div>
+                <div class="header-top-right">
+                    <span class="user-welcome" id="user-welcome">Welcome, <span id="username-display"></span>!</span>
+                    <a href="#" id="login-link">Login</a>
+                    <a href="#" id="register-link">Register</a>
+                    <button class="logout-btn" id="logout-btn" style="display: none;">Logout</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="logo">E-<span>Electronics</span></div>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav id="main-nav">
+                    <div class="close-menu">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">Products</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                        <li><a href="#" class="nav-link" data-page="cart">Cart <span class="cart-count">0</span></a></li>
+                    </ul>
+                </nav>
+                <div class="nav-icons">
+                    <a href="#" class="nav-link" data-page="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <h1>Your One-Stop Shop for Electronics</h1>
+                    <p>Discover the latest gadgets, accessories, and deals today!</p>
+                    <a href="#" class="btn btn-accent nav-link" data-page="products">Shop Now</a>
+                </div>
+            </div>
+
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">Why Choose Us</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <h3>Fast Delivery</h3>
+                            <p>Get your gadgets delivered at lightning speed.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Secure Payments</h3>
+                            <p>Safe and reliable checkout process.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3>24/7 Support</h3>
+                            <p>We're here whenever you need help.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="products">
+                <div class="container">
+                    <h2 class="section-title">Featured Products</h2>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="product-info">
+                                <h3>Smartphone</h3>
+                                <div class="product-price">₹28,000</div>
+                                <div class="product-actions">
+                                    <button class="btn btn-outline add-to-cart" data-id="1">Add to Cart</button>
+                                    <button class="btn buy-now" data-id="1">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="product-info">
+                                <h3>Headphones</h3>
+                                <div class="product-price">₹3,499</div>
+                                <div class="product-actions">
+                                    <button class="btn btn-outline add-to-cart" data-id="2">Add to Cart</button>
+                                    <button class="btn buy-now" data-id="2">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="product-info">
+                                <h3>Laptop</h3>
+                                <div class="product-price">₹55,000</div>
+                                <div class="product-actions">
+                                    <button class="btn btn-outline add-to-cart" data-id="3">Add to Cart</button>
+                                    <button class="btn buy-now" data-id="3">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Products Page -->
+        <section id="products-page" class="page">
+            <div class="products">
+                <div class="container">
+                    <h2 class="section-title">Our Products</h2>
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about-page" class="page">
+            <div class="about">
+                <div class="container">
+                    <h2 class="section-title">About Us</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>We are E-Electronics</h2>
+                            <p>Your trusted partner in buying high-quality electronic gadgets at affordable prices. We started in 2025 with the vision to bring top-notch devices to every household.</p>
+                            <p>Our mission is to provide the latest technology products with exceptional customer service and fast delivery. We carefully select each product in our inventory to ensure quality and value for our customers.</p>
+                            <p>With a team of tech enthusiasts and customer service experts, we're committed to making your shopping experience seamless and enjoyable.</p>
+                            <a href="#" class="btn nav-link" data-page="contact">Contact Us</a>
+                        </div>
+                        <div class="about-image">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact-page" class="page">
+            <div class="contact">
+                <div class="container">
+                    <h2 class="section-title">Contact Us</h2>
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <h3>Get in Touch</h3>
+                            <p>Have questions about our products or services? We're here to help!</p>
+                            <div class="contact-details">
+                                <div class="contact-detail">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>support@e-electronics.com</span>
+                                </div>
+                                <div class="contact-detail">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+91 98765 43210</span>
+                                </div>
+                                <div class="contact-detail">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>123 Tech Street, Hyderabad, India</span>
+                                </div>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                        <div class="contact-form">
+                            <form id="contact-form">
+                                <input type="text" placeholder="Your Name" required>
+                                <input type="email" placeholder="Your Email" required>
+                                <input type="text" placeholder="Subject" required>
+                                <textarea placeholder="Your Message" required></textarea>
+                                <button type="submit" class="btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Page -->
+        <section id="cart-page" class="page">
+            <div class="cart">
+                <div class="container">
+                    <h2 class="section-title">Your Shopping Cart</h2>
+                    <div class="cart-empty" id="cart-empty">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h2>Your cart is currently empty</h2>
+                        <p>Browse our products and add items to your cart</p>
+                        <a href="#" class="btn nav-link" data-page="products">Start Shopping</a>
+                    </div>
+                    <div class="cart-content" id="cart-content" style="display: none;">
+                        <div class="cart-items" id="cart-items">
+                            <!-- Cart items will be loaded here -->
+                        </div>
+                        <div class="cart-summary">
+                            <div class="cart-total">
+                                <h3>Total: <span id="cart-total">₹0</span></h3>
+                            </div>
+                            <button class="btn btn-accent" id="checkout-btn">Proceed to Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Page -->
+        <section id="login-page" class="page">
+            <div class="auth">
+                <div class="auth-container">
+                    <div class="auth-header">
+                        <h2>Login to Your Account</h2>
+                        <p>Enter your credentials to access your account</p>
+                    </div>
+                    <form class="auth-form" id="login-form">
+                        <input type="email" id="login-email" placeholder="Email Address" required>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="#" id="to-register">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Register Page -->
+        <section id="register-page" class="page">
+            <div class="auth">
+                <div class="auth-container">
+                    <div class="auth-header">
+                        <h2>Create an Account</h2>
+                        <p>Sign up to start shopping with us</p>
+                    </div>
+                    <form class="auth-form" id="register-form">
+                        <input type="text" id="register-name" placeholder="Full Name" required>
+                        <input type="email" id="register-email" placeholder="Email Address" required>
+                        <input type="password" id="register-password" placeholder="Password" required>
+                        <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="#" id="to-login">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>E-Electronics</h3>
+                    <p>Your trusted partner for high-quality electronic gadgets at affordable prices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">Products</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Hyderabad, India</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> support@e-electronics.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 E-Electronics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Message Container -->
+    <div id="global-message" style="display: none;"></div>
+
+    <script>
+        // Products Data
+        const products = [
+            {
+                id: 1,
+                name: "Smartphone",
+                price: 28000,
+                icon: "fas fa-mobile-alt",
+                image: "c:\Users\bharg\Downloads\pngimg.com - smartphone_PNG8519.png",
+                description: "Latest smartphone with advanced features"
+            },
+            {
+                id: 2,
+                name: "Headphones",
+                price: 3499,
+                icon: "fas fa-headphones",
+                description: "High-quality noise-cancelling headphones"
+            },
+            {
+                id: 3,
+                name: "Laptop",
+                price: 55000,
+                icon: "fas fa-laptop",
+                description: "Powerful laptop for work and gaming"
+            },
+            {
+                id: 4,
+                name: "Smart Watch",
+                price: 12999,
+                icon: "fas fa-clock",
+                description: "Feature-rich smartwatch with health monitoring"
+            },
+            {
+                id: 5,
+                name: "Camera",
+                price: 42500,
+                icon: "fas fa-camera",
+                description: "Professional DSLR camera"
+            },
+            {
+                id: 6,
+                name: "Gaming Console",
+                price: 38999,
+                icon: "fas fa-gamepad",
+                description: "Next-gen gaming console"
+            }
+        ];
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Initialize application
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Website loaded successfully!');
+            initializeApp();
+        });
+
+        function initializeApp() {
+            setupNavigation();
+            setupCart();
+            loadProducts();
+            setupForms();
+            setupAuth();
+            updateCartDisplay();
+            checkAuthStatus();
+            console.log('App initialized successfully!');
+        }
+
+        function setupNavigation() {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const closeMenu = document.querySelector('.close-menu');
+            const nav = document.getElementById('main-nav');
+            
+            // Show specific page and hide others
+            function showPage(pageId) {
+                console.log('Showing page:', pageId);
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    console.log('Page shown:', pageId);
+                } else {
+                    console.log('Page not found:', pageId);
+                }
+                
+                // Special handling for cart page
+                if (pageId === 'cart-page') {
+                    updateCartDisplay();
+                }
+            }
+            
+            // Navigation click handlers
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    console.log('Navigation clicked:', pageId);
+                    showPage(pageId);
+                    
+                    // Close mobile menu if open
+                    if (nav && nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.classList.add('active');
+                });
+            }
+            
+            if (closeMenu) {
+                closeMenu.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                });
+            }
+            
+            // Make showPage available globally
+            window.showPage = showPage;
+        }
+
+        function loadProducts() {
+            const productsGrid = document.getElementById('products-grid');
+            if (!productsGrid) return;
+            
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = createProductCard(product);
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-img">
+                    <i class="${product.icon}"></i>
+                </div>
+                <div class="product-info">
+                    <h3>${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-price">₹${product.price.toLocaleString()}</div>
+                    <div class="product-actions">
+                        <button class="btn btn-outline add-to-cart" data-id="${product.id}">Add to Cart</button>
+                        <button class="btn buy-now" data-id="${product.id}">Buy Now</button>
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners
+            const addToCartBtn = card.querySelector('.add-to-cart');
+            const buyNowBtn = card.querySelector('.buy-now');
+            
+            addToCartBtn.addEventListener('click', () => addToCart(product.id));
+            buyNowBtn.addEventListener('click', () => {
+                addToCart(product.id);
+                showPage('cart-page');
+            });
+            
+            return card;
+        }
+
+        function setupCart() {
+            // Add to cart functionality for featured products
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart')) {
+                    const productId = parseInt(e.target.getAttribute('data-id'));
+                    addToCart(productId);
+                }
+            });
+            
+            // Checkout button
+            const checkoutBtn = document.getElementById('checkout-btn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', handleCheckout);
+            }
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart display
+            updateCartDisplay();
+            
+            // Show confirmation
+            showMessage(`${product.name} added to cart!`, 'success');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        function updateCartQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartCounts = document.querySelectorAll('.cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartContent = document.getElementById('cart-content');
+            const cartEmpty = document.getElementById('cart-empty');
+            
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCounts.forEach(count => {
+                count.textContent = totalItems;
+            });
+            
+            // Update cart page
+            if (cart.length === 0) {
+                if (cartContent) cartContent.style.display = 'none';
+                if (cartEmpty) cartEmpty.style.display = 'block';
+            } else {
+                if (cartEmpty) cartEmpty.style.display = 'none';
+                if (cartContent) cartContent.style.display = 'block';
+                
+                // Clear existing items
+                if (cartItems) cartItems.innerHTML = '';
+                
+                // Calculate total
+                let total = 0;
+                
+                // Add cart items
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-img">
+                                <i class="${item.icon}"></i>
+                            </div>
+                            <div class="cart-item-details">
+                                <h4>${item.name}</h4>
+                                <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
+                            </div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                            <button class="remove-btn" data-id="${item.id}">Remove</button>
+                        </div>
+                    `;
+                    
+                    if (cartItems) cartItems.appendChild(cartItem);
+                });
+                
+                // Update total
+                if (cartTotal) cartTotal.textContent = `₹${total.toLocaleString()}`;
+                
+                // Add event listeners to cart controls
+                document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.getAttribute('data-id'));
+                        updateCartQuantity(id, -1);
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.getAttribute('data-id'));
+                        updateCartQuantity(id, 1);
+                    });
+                });
+                
+                document.querySelectorAll('.remove-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.getAttribute('data-id'));
+                        removeFromCart(id);
+                    });
+                });
+            }
+        }
+
+        function handleCheckout() {
+            if (cart.length === 0) {
+                showMessage('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            
+            if (!isLoggedIn) {
+                showMessage('Please login to proceed with checkout', 'error');
+                showPage('login-page');
+                return;
+            }
+            
+            // Simulate checkout process
+            showMessage('Order placed successfully! Thank you for your purchase.', 'success');
+            
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        function setupForms() {
+            // Contact form
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showMessage('Message sent successfully! We will get back to you soon.', 'success');
+                    this.reset();
+                });
+            }
+        }
+
+        function setupAuth() {
+            const loginLink = document.getElementById('login-link');
+            const registerLink = document.getElementById('register-link');
+            const toLogin = document.getElementById('to-login');
+            const toRegister = document.getElementById('to-register');
+            const logoutBtn = document.getElementById('logout-btn');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            
+            // Auth navigation
+            if (loginLink) {
+                loginLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showPage('login-page');
+                });
+            }
+            
+            if (registerLink) {
+                registerLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showPage('register-page');
+                });
+            }
+            
+            if (toLogin) {
+                toLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showPage('login-page');
+                });
+            }
+            
+            if (toRegister) {
+                toRegister.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showPage('register-page');
+                });
+            }
+            
+            // Logout functionality
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            }
+            
+            // Login form submission
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    handleLogin();
+                });
+            }
+            
+            // Register form submission
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    handleRegister();
+                });
+            }
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                showAuthMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            // Check if user exists
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Login successful
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userName', user.name);
+                localStorage.setItem('userEmail', user.email);
+                
+                showAuthMessage('Login successful!', 'success');
+                checkAuthStatus();
+                
+                setTimeout(() => {
+                    showPage('home-page');
+                    document.getElementById('login-form').reset();
+                }, 1500);
+            } else {
+                showAuthMessage('Invalid email or password', 'error');
+            }
+        }
+
+        function handleRegister() {
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            // Validation
+            if (!name || !email || !password || !confirmPassword) {
+                showAuthMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showAuthMessage('Passwords do not match', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showAuthMessage('Password must be at least 6 characters long', 'error');
+                return;
+            }
+            
+            // Check if user already exists
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const existingUser = users.find(u => u.email === email);
+            
+            if (existingUser) {
+                showAuthMessage('User with this email already exists', 'error');
+                return;
+            }
+            
+            // Register user
+            const newUser = {
+                name: name,
+                email: email,
+                password: password
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Auto-login after registration
+            localStorage.setItem('userLoggedIn', 'true');
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            
+            showAuthMessage('Registration successful! Welcome to E-Electronics!', 'success');
+            checkAuthStatus();
+            
+            setTimeout(() => {
+                showPage('home-page');
+                document.getElementById('register-form').reset();
+            }, 1500);
+        }
+
+        function logout() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            
+            showMessage('Logged out successfully', 'success');
+            checkAuthStatus();
+            showPage('home-page');
+        }
+
+        function checkAuthStatus() {
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            const userWelcome = document.getElementById('user-welcome');
+            const usernameDisplay = document.getElementById('username-display');
+            const loginLink = document.getElementById('login-link');
+            const registerLink = document.getElementById('register-link');
+            const logoutBtn = document.getElementById('logout-btn');
+            
+            if (isLoggedIn) {
+                const userName = localStorage.getItem('userName') || 'User';
+                if (userWelcome) userWelcome.style.display = 'inline';
+                if (usernameDisplay) usernameDisplay.textContent = userName;
+                if (loginLink) loginLink.style.display = 'none';
+                if (registerLink) registerLink.style.display = 'none';
+                if (logoutBtn) logoutBtn.style.display = 'inline';
+            } else {
+                if (userWelcome) userWelcome.style.display = 'none';
+                if (loginLink) loginLink.style.display = 'inline';
+                if (registerLink) registerLink.style.display = 'inline';
+                if (logoutBtn) logoutBtn.style.display = 'none';
+            }
+        }
+
+        function showMessage(message, type) {
+            // Create or get message element
+            let messageEl = document.getElementById('global-message');
+            if (!messageEl) {
+                messageEl = document.createElement('div');
+                messageEl.id = 'global-message';
+                document.body.appendChild(messageEl);
+            }
+            
+            messageEl.textContent = message;
+            messageEl.className = `form-message ${type}`;
+            messageEl.style.display = 'block';
+            
+            // Position the message
+            messageEl.style.position = 'fixed';
+            messageEl.style.top = '20px';
+            messageEl.style.right = '20px';
+            messageEl.style.zIndex = '1000';
+            messageEl.style.padding = '15px 20px';
+            messageEl.style.borderRadius = '5px';
+            messageEl.style.maxWidth = '300px';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 3000);
+        }
+
+        function showAuthMessage(message, type) {
+            // Create message element in auth container
+            const authContainer = document.querySelector('.auth-container');
+            let messageEl = authContainer.querySelector('.form-message');
+            
+            if (!messageEl) {
+                messageEl = document.createElement('div');
+                messageEl.className = 'form-message';
+                authContainer.insertBefore(messageEl, authContainer.querySelector('.auth-form'));
+            }
+            
+            messageEl.textContent = message;
+            messageEl.className = `form-message ${type}`;
+            messageEl.style.display = 'block';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 3000);
+        }
+
+        // Make functions available globally
+        window.checkAuthStatus = checkAuthStatus;
+        window.updateCartDisplay = updateCartDisplay;
+    </script>
+</body>
+</html>

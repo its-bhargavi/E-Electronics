@@ -1,0 +1,13 @@
+/* Auth Pages */
+.auth { padding: 80px 0; min-height: 70vh; display: flex; align-items: center; justify-content: center; }
+.auth-container { background-color: white; border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); padding: 40px; width: 100%; max-width: 450px; }
+.auth-header { text-align: center; margin-bottom: 30px; }
+.auth-header h2 { color: var(--primary); margin-bottom: 10px; }
+.auth-form input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
+.auth-form button { width: 100%; margin-bottom: 20px; }
+.auth-footer { text-align: center; margin-top: 20px; }
+.auth-footer a { color: var(--secondary); font-weight: 500; }
+
+.user-welcome { display: none; color: var(--light); }
+.logout-btn { background: none; border: none; color: var(--light); cursor: pointer; margin-left: 15px; }
+.logout-btn:hover { color: var(--secondary); }
